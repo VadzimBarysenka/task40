@@ -21,7 +21,7 @@ public class TableSortAndSearch {
         List<WebElement> pages = driver.findElements(By.xpath("//span//a[contains(@class, \"paginate_button \")]"));
         List<Employee> employees = new ArrayList<>();
 
-        for (int p = 0; p < pages.size() - 1; p++) {
+        for (int p = 1; p <= pages.size(); p++) {
             List<WebElement> allRows = driver.findElements(By.xpath("//tbody/tr"));
 
             for (int i = 1; i <= allRows.size(); i++) {
@@ -36,7 +36,7 @@ public class TableSortAndSearch {
                     employees.add(e);
                 }
             }
-            driver.findElement(By.xpath("//a[@class=\"paginate_button next\"]")).click();
+            driver.findElement(By.xpath("//a[@id=\"example_next\"]")).click();
         }
         driver.close();
         return employees;

@@ -8,10 +8,11 @@ public class ProgressBarDownload {
 
     public void progressBarRefreshAfterFifty() {
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get("https://www.seleniumeasy.com/test/bootstrap-download-progress-demo.html");
         driver.findElement(By.xpath("//button[@class=\"btn btn-block btn-primary\"]")).click();
-        WebDriverWait a = new WebDriverWait(driver, 30);
-        a.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class=\"slice clipauto\"]")));
+        WebDriverWait waiter = new WebDriverWait(driver, 10);
+        waiter.until(ExpectedConditions.textToBe(By.xpath("//div[@class=\"percenttext\"]"), "50%"));
         driver.navigate().refresh();
     }
 }
