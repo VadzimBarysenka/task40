@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,11 +31,7 @@ public class MultiSelectTest {
         objSelect.selectByValue("Ohio");
         objSelect.selectByVisibleText("Washington");
 
-        List<String> expectedValues = new ArrayList<>();
-        expectedValues.add("Ohio");
-        expectedValues.add("Texas");
-        expectedValues.add("Washington");
-
+        List<String> expectedValues = Arrays.asList("Ohio", "Texas", "Washington");
         List<String> actualValues = objSelect.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
 
         assertEquals(expectedValues, actualValues);
