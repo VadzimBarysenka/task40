@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +29,7 @@ public class TableSortAndSearch {
                 int employeeAge = Integer.parseInt(age.getText());
                 double employeeSalary = Double.parseDouble(salary.getText().substring(1).replaceAll("/y", "").replaceAll(",", ""));
 
-                if (employeeAge == requiredAge & employeeSalary <= requiredSalary) {
+                if (employeeAge > requiredAge & employeeSalary <= requiredSalary) {
                     WebElement name = element.findElement(By.xpath("td[1]"));
                     WebElement position = element.findElement(By.xpath("td[2]"));
                     WebElement office = element.findElement(By.xpath("td[3]"));
